@@ -1,0 +1,198 @@
+// DTS overlay for the AGC rope interface.
+//
+// Compile with:
+// dtc -O dtb -I dts -o /lib/firmware/PRU-AGC-00A0.dtbo -b 0 -@ PRU-AGC-00A0.dts
+
+/dts-v1/;
+/plugin/;
+
+/{
+       compatible = "ti,beaglebone", "ti,beaglebone-black";
+       part-number = "DM-GPIO-Test";
+       version = "00A0";
+
+  exclusive-use =
+         "P8_18", // sense1
+         "P8_7", // sense2
+         "P8_8", // sense3
+         "P8_10", // sense4
+         "P8_9", // sense5
+         "P8_45", // sense6
+         "P8_46", // sense7
+         "P8_43", // sense8
+         "P8_44", // sense9
+         "P8_41", // sense10
+         "P8_42", // sense11
+         "P8_39", // sense12
+         "P8_40", // sense13
+         "P8_37", // sense14
+         "P8_38", // sense15
+         "P8_36", // sense16
+         "P8_12", // il1
+         "P8_11", // il2
+         "P8_16", // il3
+         "P8_15", // il4
+         "P9_15", // il5
+         "P9_23", // il6
+         "P9_14", // il7
+         "P9_16", // plane0
+         "P8_35", // plane1
+         "P8_33", // plane2
+         "P8_31", // plane3
+         "P8_32", // plane4
+         "P9_20", // plane5
+         "P9_19", // plane6
+         "P9_26", // plane7
+         "P9_24", // plane8
+         "P9_31", // addr_okay
+         "P9_29", // clear
+         "P9_30", // red
+         "P9_22", // r
+         "P9_21", // g
+         "P8_34", // b
+        "pru0";
+
+       fragment@0 {
+             target = <&am33xx_pinmux>;
+            
+             __overlay__ {
+                  pinctrl_test: DM_GPIO_Test_Pins {
+			pinctrl-single,pins = <
+         0x08C 0x0f /* P8_18 sense1 - gpio2[1] - output */
+         0x090 0x0f /* P8_7 sense2 - gpio2[2] - output */
+         0x094 0x0f /* P8_8 sense3 - gpio2[3] - output */
+         0x098 0x0f /* P8_10 sense4 - gpio2[4] - output */
+         0x09C 0x0f /* P8_9 sense5 - gpio2[5] - output */
+         0x0A0 0x0f /* P8_45 sense6 - gpio2[6] - output */
+         0x0A4 0x0f /* P8_46 sense7 - gpio2[7] - output */
+         0x0A8 0x0f /* P8_43 sense8 - gpio2[8] - output */
+         0x0AC 0x0f /* P8_44 sense9 - gpio2[9] - output */
+         0x0B0 0x0f /* P8_41 sense10 - gpio2[10] - output */
+         0x0B4 0x0f /* P8_42 sense11 - gpio2[11] - output */
+         0x0B8 0x0f /* P8_39 sense12 - gpio2[12] - output */
+         0x0BC 0x0f /* P8_40 sense13 - gpio2[13] - output */
+         0x0C0 0x0f /* P8_37 sense14 - gpio2[14] - output */
+         0x0C4 0x0f /* P8_38 sense15 - gpio2[15] - output */
+         0x0C8 0x0f /* P8_36 sense16 - gpio2[16] - output */
+         0x030 0x27 /* P8_12 il1 - gpio1[12] - input */
+         0x034 0x27 /* P8_11 il2 - gpio1[13] - input */
+         0x038 0x27 /* P8_16 il3 - gpio1[14] - input */
+         0x03C 0x27 /* P8_15 il4 - gpio1[15] - input */
+         0x040 0x27 /* P9_15 il5 - gpio1[16] - input */
+         0x044 0x27 /* P9_23 il6 - gpio1[17] - input */
+         0x048 0x27 /* P9_14 il7 - gpio1[18] - input */
+         0x04C 0x27 /* P9_16 plane0 - gpio1[19] - input */
+         0x0D0 0x27 /* P8_35 plane1 - gpio0[8] - input */
+         0x0D4 0x27 /* P8_33 plane2 - gpio0[9] - input */
+         0x0D8 0x27 /* P8_31 plane3 - gpio0[10] - input */
+         0x0DC 0x27 /* P8_32 plane4 - gpio0[11] - input */
+         0x178 0x27 /* P9_20 plane5 - gpio0[12] - input */
+         0x17C 0x27 /* P9_19 plane6 - gpio0[13] - input */
+         0x180 0x27 /* P9_26 plane7 - gpio0[14] - input */
+         0x184 0x27 /* P9_24 plane8 - gpio0[15] - input */
+         0x190 0x26 /* P9_31 addr_okay - pr1_pru0_pru_r31_0 - input */
+         0x194 0x26 /* P9_29 clear - pr1_pru0_pru_r31_1 - input */
+         0x198 0x0f /* P9_30 red - gpio3[16] - output */
+         0x150 0x0b /* P9_22 r - ehrpwm0A - output */
+         0x154 0x0b /* P9_21 g - ehrpwm0B - output */
+         0x0CC 0x0a /* P8_34 b - ehrpwm1B - output */
+			>;
+		  };
+             };
+       };
+
+       fragment@1 {
+		target = <&ocp>;
+		__overlay__ {
+	         	P8_18_pinmux {status = "disabled"; }; // sense1
+	         	P8_7_pinmux {status = "disabled"; }; // sense2
+	         	P8_8_pinmux {status = "disabled"; }; // sense3
+	         	P8_10_pinmux {status = "disabled"; }; // sense4
+	         	P8_9_pinmux {status = "disabled"; }; // sense5
+	         	P8_45_pinmux {status = "disabled"; }; // sense6
+	         	P8_46_pinmux {status = "disabled"; }; // sense7
+	         	P8_43_pinmux {status = "disabled"; }; // sense8
+	         	P8_44_pinmux {status = "disabled"; }; // sense9
+	         	P8_41_pinmux {status = "disabled"; }; // sense10
+	         	P8_42_pinmux {status = "disabled"; }; // sense11
+	         	P8_39_pinmux {status = "disabled"; }; // sense12
+	         	P8_40_pinmux {status = "disabled"; }; // sense13
+	         	P8_37_pinmux {status = "disabled"; }; // sense14
+	         	P8_38_pinmux {status = "disabled"; }; // sense15
+	         	P8_36_pinmux {status = "disabled"; }; // sense16
+	         	P8_12_pinmux {status = "disabled"; }; // il1
+	         	P8_11_pinmux {status = "disabled"; }; // il2
+	         	P8_16_pinmux {status = "disabled"; }; // il3
+	         	P8_15_pinmux {status = "disabled"; }; // il4
+	         	P9_15_pinmux {status = "disabled"; }; // il5
+	         	P9_23_pinmux {status = "disabled"; }; // il6
+	         	P9_14_pinmux {status = "disabled"; }; // il7
+	         	P9_16_pinmux {status = "disabled"; }; // plane0
+	         	P8_35_pinmux {status = "disabled"; }; // plane1
+	         	P8_33_pinmux {status = "disabled"; }; // plane2
+	         	P8_31_pinmux {status = "disabled"; }; // plane3
+	         	P8_32_pinmux {status = "disabled"; }; // plane4
+	         	P9_20_pinmux {status = "disabled"; }; // plane5
+	         	P9_19_pinmux {status = "disabled"; }; // plane6
+	         	P9_26_pinmux {status = "disabled"; }; // plane7
+	         	P9_24_pinmux {status = "disabled"; }; // plane8
+	         	P9_31_pinmux {status = "disabled"; }; // addr_okay
+	         	P9_29_pinmux {status = "disabled"; }; // clear
+	         	P9_30_pinmux {status = "disabled"; }; // red
+	         	P9_22_pinmux {status = "disabled"; }; // r
+	         	P9_21_pinmux {status = "disabled"; }; // g
+	         	P8_34_pinmux {status = "disabled"; }; // b
+
+			test_helper: helper {
+				compatible = "bone-pinmux-helper";
+				pinctrl-names = "default";
+				pinctrl-0 = <&pinctrl_test>;
+				status = "okay";
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&epwmss0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@3 {
+		target = <&ehrpwm0>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@4 {
+		target = <&epwmss1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@5 {
+		target = <&ehrpwm1>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	fragment@6 {
+		target-path = "/";
+		__overlay__ {
+			reserved-memory {
+				#address-cells = <1>;
+				#size-cells = <1>;
+				ranges;
+				
+				pru_comm_reserved: pru_comm_reserved@9fc00000 {
+					reg = <0x9fc00000 0x10000>;
+					no-map;
+				};
+			};
+		};
+	};
+};

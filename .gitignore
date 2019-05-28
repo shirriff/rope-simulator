@@ -1,0 +1,10 @@
+*.png
+files_old/
+
+# Binaries
+host/agc_host
+host/agc_test
+host/mem_fill_host
+host/shared
+pru/AM335x_PRU.cmd
+pru/Makefile
