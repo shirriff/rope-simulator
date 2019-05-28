@@ -15,7 +15,7 @@ void main(void) {
     exit(-1);
   }
   // volatile uint32_t *vaddr = (uint32_t *)mmap(NULL, 8192, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x48300000); // PWM reg
-  volatile uint32_t *vaddr = (uint32_t *)mmap(NULL, 8192, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x81400000); // shared
+  volatile uint32_t *vaddr = (uint32_t *)mmap(NULL, 8192, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x9fc00000); // shared
   if (vaddr == 0) {
     perror("Mmap /dev/mem failed");
     exit(-1);

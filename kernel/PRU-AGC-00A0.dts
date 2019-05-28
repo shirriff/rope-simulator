@@ -189,7 +189,7 @@
 				ranges;
 				
 				pru_comm_reserved: pru_comm_reserved@9fc00000 {
-					reg = <0x9fc00000 0x10000>;
+					reg = <0x9fc00000 0x20000>;
 					no-map;
 				};
 			};

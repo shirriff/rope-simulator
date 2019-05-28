@@ -4,8 +4,7 @@
 #include "resource_table_empty.h"
 
 // 64K of reserved RAM for sharing with ARM
-// #define SHARED ((volatile void *)(0x9fdf0000))
-#define SHARED ((volatile void *)(0x81400000))
+#define SHARED ((volatile void *)(0x9fc00000))
 #define GPIO0	0x44e07000		// GPIO Bank 0  See Table 2.2 of TRM <1>
 #define GPIO1	0x4804c000		// GPIO Bank 1
 #define GPIO2	0x481ac000		// GPIO Bank 2
