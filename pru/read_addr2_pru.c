@@ -1,4 +1,6 @@
-// Do a simple sweep of sense pin outputs
+// PRU code to read address lines and write to iface->lastaddr
+// This version uses OUTPUT_ADDR_OKAY
+
 #include <stdint.h>
 #include <pru_cfg.h>
 #include "resource_table_empty.h"
@@ -28,12 +30,6 @@ inline void pwm_red() {
 	*PWM01 = 0;
 	*PWM21 = 0;
 }
-
-inline void log(volatile struct iface *iface, uint32_t data) {
-      iface->bufend = (iface->bufend + 1) % BUFSIZE;
-      iface->buf[iface->bufend] = data;
-}
-
 
 inline void pwm_green() {
 	*PWM00 = 0;
@@ -74,16 +70,47 @@ void main(void)
 	volatile uint32_t *gpio0 = (uint32_t *)GPIO0;
 	volatile uint32_t *gpio1 = (uint32_t *)GPIO1;
 	volatile uint32_t *gpio2 = (uint32_t *)GPIO2;
+	volatile uint32_t *gpio3 = (uint32_t *)GPIO3;
 	volatile uint16_t *shared = (uint16_t *)SHARED;
 	uint32_t count = 0;
         volatile struct iface *iface = (volatile struct iface * )MEM_START;
+	// Turn on PWM
+	*PWM00 = 0x63;
+	*PWM01 = 0x63;
+	*PWM21 = 0x63;
+
+        int toggle = 0;
+        pwm_green();
+        iface->state = STATE_IDLE;
 
 	while (1) {
-          int i;
-	  for (i = 0; i < 16; i++) {
-            int x = shared[i]; // Comment out to disable memory access
-	    __delay_cycles(4800); // Two 12us cycles
-	    gpio2[GPIO_DATAOUT] = (2 << i) ^ 0x0001fffe;
-	  }
+	    count = 0;
+            // Wait for OUTPUT_ADDR_SET and OUTPUT_ACTIVE
+            while (( __R31 & 3) != 1) {
+	        count++;
+	    }
+	    iface->buf[0] = count;
+
+            // At this point, the address should be good.
+            // Get the address
+            uint32_t address = (gpio0[GPIO_DATAIN] & 0xff00) | ((gpio1[GPIO_DATAIN] >> 12) & 0x00ff);
+            iface->lastaddr = address;
+            pwm_magenta();
+
+            // Wait for OUTPUT_ACTIVE low indicating the read is done
+            while ((__R31 & 3) != 2) {
+	        count++;
+	    }
+	    iface->buf[1] = count;
+
+            iface->state = STATE_IDLE;
+            // Indicate idle color
+            if (toggle) {
+              pwm_green();
+              toggle = 0;
+            } else {
+              pwm_blue();
+              toggle = 1;
+            }
 	}
 }

@@ -1,7 +1,7 @@
-// Display address from shared info buffer
+// Display address from shared info buffer. Filter out oscillations.
 // cc -o display_addr display_addr.c -lncurses
 
-#include <curses.h>
+#include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -11,6 +11,15 @@
 #include <sys/mman.h>
 #include "../pru/iface.h"
 
+void printBinary(int n, int nbits) {
+  for (int i = nbits-1; i >= 0; i--) {
+    if (n & (1 << i)) {
+      printf("1");
+    } else {
+      printf("0");
+    }
+  }
+}
 
 // Read /dev/mem
 void main(void) {
@@ -34,45 +43,31 @@ void main(void) {
     perror("Mmap /dev/mem failed on iface");
     exit(-1);
   }
-  initscr();
-  int row, col;
-  getmaxyx(stdscr, row, col);
-  clear();
-  mvprintw(row-5, 0, "pppppppppiiiiiii");
-  mvprintw(row-4, 0, "8765432107654321");
   char *labels[] = {"R1", "R2", "S1", "S2", "T1", "T2"};
+
+  uint16_t lastaddr = 0;
   while (1) {
-    uint16_t addr = iface->lastaddr;
-    uint16_t il = addr & 0x7f; // Bottom 
+    time_t start = time(NULL);
+    uint16_t addr = 0;
+    for (int i = 0; i < 1000; i++) {
+      uint16_t addr0 = iface->lastaddr;
+      addr |= addr0;
+    }
+    if (addr == lastaddr) continue;
+    lastaddr = addr;
+    printBinary(addr, 16);
+    printf(" %d ", start);
+
+    uint16_t il = addr & 0x7f;
     uint16_t plane = (addr >> 7) & 3; // SetAB, SetCD, Reset
     uint16_t strand = (addr >> 9) % 12;
     uint16_t mod = (addr >> 9) / 12;
-    for (int i = 0; i < 6; i++) {
-      mvprintw(i, 0, "%s .... .... .... .... .... .... .... .... .... .... .... ....", labels[i]);
-    }
-    attron(A_STANDOUT);
-    if (mod < 6) {
-      mvprintw(mod, 3 + strand * 5, "%04X", addr);
-    }
-    attroff(A_STANDOUT);
-      
-    // Show plane 5
-    if (addr & (1 << 12)) {
-      attron(A_STANDOUT);
-    }
-    // mvprintw(15, 0, "5                           ");
-    attroff(A_STANDOUT);
-    
-    // Output binary
-    for (int i = 0; i < 16; i++) {
-      mvprintw(row-3, 15-i, (addr & (1 << i)) ? "1" : "0");
-    }
     char *label = "!!!";
     if (mod < 6) {
       label = labels[mod];
     }
-    mvprintw(row-2, 0, "%06x %s %2d %d %2x  %d %d    ", addr, label, strand, plane, il, iface->buf[0], iface->buf[1]);
-    refresh();
+    printf("   %06x %s %2d %d %2x %d %d  ", addr, label, strand, plane, il, iface->buf[0], iface->buf[1]);
+    printf("\n");
     usleep(10000);
   }
 }
