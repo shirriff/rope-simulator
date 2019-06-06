@@ -29,9 +29,10 @@ inline void pwm_red() {
 	*PWM21 = 0;
 }
 
-inline void log(volatile struct iface *iface, uint32_t data) {
+inline void log(volatile struct iface *iface, uint16_t count, uint32_t r31, uint32_t state) {
+      iface->state = state;
       iface->bufend = (iface->bufend + 1) % BUFSIZE;
-      iface->buf[iface->bufend] = data;
+      iface->buf[iface->bufend] = (count << 6) | (r31 << 4) | state;;
 }
 
 
@@ -68,6 +69,12 @@ inline void pwm_yellow() {
 	*PWM21 = 0;
 }
 
+void fault() {
+        red();
+	__delay_cycles(200000); // 1 second
+	// Wait until back in idle state
+	while ((__R31 & 3) != 2) {};
+}
 
 void main(void)
 {
@@ -88,63 +95,90 @@ void main(void)
 	gpio3[GPIO_DATAOUT/4] = 1<<16;
 
         int toggle = 0;
-        pwm_green();
-        iface->state = STATE_IDLE;
+	uint32_t r31 = __R31 & 3;
 
 	while (1) {
-	    count++;
-            // Wait for OUTPUT_ADDR_OKAY
-            while (( __R31 & 1) == 0) {
-	        count++;
+	    pwm_green();
+	    log(iface, count, r31, STATE_IDLE);
+	    gpio2[GPIO_DATAOUT] = 0; // Clear sense lines
+            // Wait for OUTPUT_ACTIVE
+
+	    // Wait in idle state until OUTPUT_ACTIVE
+	    while (r31 == 2) {
+	      r31 == __R31 & 3;
+	      count++;
 	    }
 
-            // At this point, the address should be good.
-            // Get the address
-            uint32_t address = (((gpio1[GPIO_DATAIN]) >> 12) & 0xff) | (((gpio0[GPIO_DATAIN]) >> 8) & 0xff);
-	    address = count & 0xffff;
-            uint16_t data = shared[address];
-            iface->state = STATE_GOT_ADDRESS;
-	    log(iface, (count << 8) | STATE_GOT_ADDRESS);
-	    log(iface, (address << 16) | data);
-            iface->lastaddr = address;
-            iface->lastdata = data;
+	    if (r31 != 3) {
+	      log(iface, count, r31, STATE_FAULT);
+	      fault();
+	      break;
+	    }
+
+	    // Now active state
             pwm_magenta();
+	    log(iface, count, r31, STATE_ACTIVE);
 
-            // Wait for OUTPUT_CLEAR_GATE to go high, or OUTPUT_ADDR_OKAY to go low
-
-            while ((__R31 & 3) == 1) {
-	        count++;
+	    while (r31 == 3) {
+	      r31 == __R31 & 3;
+	      count++;
 	    }
 
-            if ((__R31 & 2) == 0) {
-                // CLEAR' should be high to proceed. If not, quit this operation.
-                iface->state = STATE_CLEAR_CANCEL;
-		log(iface, (count << 8) | STATE_CLEAR_CANCEL);
-                pwm_red();
-                break;
-            }
-            // OUTPUT_CLEAR_GATE went high, no clear so read is proceeding.
-
-            iface->state = STATE_WRITING;
-	    log(iface, (count << 8) | STATE_WRITING);
-            pwm_cyan();
-
-            gpio2[GPIO_DATAOUT] = ((uint32_t) data) << 1; // Sense data starts in bit 1 of gpio2
-
-            // Wait for OUTPUT_ADDR_OKAY low indicating the read is done
-            while ((__R31 & 1) == 1) {
-	        count++;
+	    if (r31 == 2) {
+	      // Active signal dropped. Clear signal must have blocked read.
+	      log(iface, count, r31, STATE_CLEAR_CANCEL);
+	      break;
+	    } else if (r31 != 1) {
+	      // Unexpected state
+	      log(iface, count, r31, STATE_FAULT);
+	      fault();
+	      break;
 	    }
 
-            iface->state = STATE_IDLE;
-	    log(iface, (count << 8) | STATE_IDLE);
-            // Indicate idle color
-            if (toggle) {
-              pwm_green();
-              toggle = 0;
-            } else {
-              pwm_blue();
-              toggle = 1;
-            }
+	    // GOT_ADDR 
+	    blue();
+	    log(iface, count, r31, STATE_GOT_ADDR);
+
+	    // At this point, the address should be good.
+	    // Get the address
+	    uint32_t address = (gpio0[GPIO_DATAIN] & 0xff00) | ((gpio1[GPIO_DATAIN] >> 12) & 0x00ff);
+	    address = count & 0xffff;
+	    uint16_t data = shared[address];
+	    gpio2[GPIO_DATAOUT] = ((uint32_t) data) << 1; // Sense data starts in bit 1 of gpio2
+	    iface->lastaddr = address;
+	    iface->lastdata = data;
+
+	    // Wait for GOT_ADDR drop
+	    while (r31 == 1) {
+	      r31 == __R31 & 3;
+	      count++;
+	    }
+
+	    if (r31 != 3) {
+	      // Unexpected state
+	      log(iface, count, r31, STATE_FAULT);
+	      fault();
+	      break;
+	    }
+
+	    // GOT_ADDR dropped
+	    yellow();
+	    log(iface, count, r31, STATE_WRITING);
+
+	    while (r31 == 3) {
+	      r31 == __R31 & 3;
+	      count++;
+	    }
+
+	    if (r31 != 2) {
+	      // Unexpected state
+	      log(iface, count, r31, STATE_FAULT);
+	      fault();
+	      break;
+	    }
+
+	    // Done
+	    log(iface, count, r31, STATE_IDLE);
+	    pwm_green();
 	}
 }

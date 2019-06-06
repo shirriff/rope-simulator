@@ -10,11 +10,12 @@
 
 #define BUFSIZE 400
 
-#define STATE_IDLE 1 // Waiting for memory access: green/blue
-#define STATE_GOT_ADDRESS 2 // OUTPUT_ADDR_OKAY indicated address available: magenta
-#define STATE_WAIT_CLEAR_GATE 3 // Waiting to get past CLEAR: cyan
+#define STATE_IDLE 1 // Waiting for memory access: green
+#define STATE_ACTIVE 2 // OUTPUT_ACTIVE: read started, magenta
+#define STATE_GOT_ADDR 3 // ADDR_SET: blue
 #define STATE_WRITING 4 // Writing to sense: yellow
-#define STATE_CLEAR_CANCEL 5 // Access canceled by CLEAR: red
+#define STATE_CLEAR_CANCEL 5 // Access canceled by CLEAR
+#define STATE_FAULT 6 // Unexpected state: red
 
 // Interface between host and PRU
 struct iface {
