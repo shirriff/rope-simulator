@@ -35,5 +35,6 @@ void main(void)
 	while (1) {
             uint32_t address = (((gpio1[GPIO_DATAIN]) >> 12) & 0xff) | (gpio0[GPIO_DATAIN] & 0xff00);
               iface->lastaddr = address;
+	      iface->lastdata = shared[address];
 	}
 }

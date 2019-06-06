@@ -95,6 +95,7 @@ void main(void)
             // Get the address
             uint32_t address = (gpio0[GPIO_DATAIN] & 0xff00) | ((gpio1[GPIO_DATAIN] >> 12) & 0x00ff);
             iface->lastaddr = address;
+	    iface->lastdata = shared[address];
             pwm_magenta();
 
             // Wait for OUTPUT_ACTIVE low indicating the read is done
