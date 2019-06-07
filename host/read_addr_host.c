@@ -34,10 +34,12 @@ void main(void) {
     perror("Mmap /dev/mem failed on iface");
     exit(-1);
   }
+
   initscr();
   int row, col;
   getmaxyx(stdscr, row, col);
   clear();
+  mvprintw(0, 0, "    S1   S2   S3   S4   S5   S6   S7   S8   S9   S10  S11  S12");
   mvprintw(row-5, 0, "pppppppppiiiiiii");
   mvprintw(row-4, 0, "8765432107654321");
   char *labels[] = {"R1", "R2", "S1", "S2", "T1", "T2"};
@@ -48,11 +50,11 @@ void main(void) {
     uint16_t strand = (addr >> 9) % 12;
     uint16_t mod = (addr >> 9) / 12;
     for (int i = 0; i < 6; i++) {
-      mvprintw(i, 0, "%s .... .... .... .... .... .... .... .... .... .... .... ....", labels[i]);
+      mvprintw(i + 1, 0, "%s .... .... .... .... .... .... .... .... .... .... .... ....", labels[i]);
     }
     attron(A_STANDOUT);
     if (mod < 6) {
-      mvprintw(mod, 3 + strand * 5, "%04X", addr);
+      mvprintw(mod + 1, 3 + strand * 5, "%04X", addr);
     }
     attroff(A_STANDOUT);
       
@@ -71,7 +73,12 @@ void main(void) {
     if (mod < 6) {
       label = labels[mod];
     }
-    mvprintw(row-2, 0, "%06x %s %2d %d %2x  %d %d    ", addr, label, strand, plane, il, iface->buf[0], iface->buf[1]);
+    uint16_t data = iface->lastdata;
+    // Remove parity bit
+    uint16_t decoded = ((data & 0x8000) >> 1) | (data & 0x3fff);
+    int oct = iface->lastdata;
+    mvprintw(row-2, 0, "a:%04x %06o %s %2d s:%d %2x  d:%04X %05o  ", addr, addr, label, strand + 1, plane, il, data, decoded);
+    mvprintw(row-1, 0, "%d %d   ", iface->buf[0], iface->buf[1]);
     refresh();
     usleep(10000);
   }
