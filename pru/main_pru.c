@@ -112,13 +112,13 @@ void main(void)
 	  count++;
 	}
 
-	uint16_t test_output = 0;
 	while (1) {
+idle_loop:
 	    count = 0;
 	    pwm_green();
 	    r31 = __R31 & 3;
 	    update_status(iface, count, r31, STATE_IDLE);
-	    gpio2[GPIO_DATAOUT] = 0; // Clear sense lines
+	    gpio2[GPIO_DATAOUT] = 0xffff << 1; // Clear sense lines
             // Wait for OUTPUT_ACTIVE
 
 	    // Wait in idle state until OUTPUT_ACTIVE
@@ -176,8 +176,6 @@ active:
 	    // Get the address
 	    uint32_t address = (gpio0[GPIO_DATAIN] & 0xff00) | ((gpio1[GPIO_DATAIN] >> 12) & 0x00ff);
 	    uint16_t data = shared[address];
-	    data = (test_output << 12) | (test_output << 8) | (test_output << 4) | test_output;
-	    test_output = (test_output + 1) % 16;
 	    gpio2[GPIO_DATAOUT] = ((uint32_t) (data ^ 0xffff)) << 1; // Sense data starts in bit 1 of gpio2. Flip bits; active-low.
 	    iface->lastaddr = address;
 	    iface->lastdata = data;
@@ -193,7 +191,8 @@ active:
 	      // Unexpected state
 	      update_status(iface, count, r31, STATE_FAULT);
 	      fault(iface);
-	      continue;
+	      goto idle_loop;
+	      // continue;
 	    }
 
 	    // GOT_ADDR dropped

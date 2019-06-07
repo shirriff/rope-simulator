@@ -47,7 +47,6 @@ void main(int argc, char **argv) {
   for (int i = 0; i < 36 * 1024; i++) {
     uint16_t word = shared[i];
     shared[i] = (word << 8) | (word >> 8);
-    shared[i] = 0x0001;
   }
   printf("Reading %s\n", fname);
 
@@ -88,7 +87,10 @@ void main(int argc, char **argv) {
     printf("%d %d %d", r31 >> 1, r31 & 1, count);
     if (state == STATE_GOT_ADDR) {
       // Double entry
-      printf(" %x %x", iface->buf[i+1] >> 16, iface->buf[i+1] & 0xffff);
+      uint16_t addr = iface->buf[i+1] >> 16;
+      uint16_t data = iface->buf[i+1] & 0xffff;
+      uint16_t data2 = ((data & 0x8000) >> 1) | (data & 0x3fff);
+      printf(" a:%x d:%x   a:%05o d:%05o %05o", addr, data, addr, data, data2);
       i++;
     }
     printf("\n");
