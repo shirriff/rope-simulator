@@ -25,5 +25,7 @@ struct iface {
         uint32_t state; // Current state
         uint32_t bufend; // next entry to write in buf. (out)
 	uint32_t buf[BUFSIZE]; // Circular buffer (out)
+	uint32_t faultaddr;
+	uint32_t faultdata;
 };
 #endif /* IFACE_H_ */
