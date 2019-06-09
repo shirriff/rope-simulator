@@ -11,7 +11,7 @@
 
 // Read /dev/mem
 void main(int argc, char **argv) {
-  const char *fname = "Aurora12.bin";
+  const char *fname = NULL;
   if (argc > 1) {
     fname = argv[1];
   }
@@ -29,26 +29,30 @@ void main(int argc, char **argv) {
     exit(-1);
   }
 
-  FILE *f = fopen(fname, "r");
-  if (f == NULL) {
-    perror(fname);
-    exit(-1);
-  }
+  if (fname == NULL) {
+    printf("No file read, using memory.\n");
+  } else {
+    FILE *f = fopen(fname, "r");
+    if (f == NULL) {
+      perror(fname);
+      exit(-1);
+    }
 
-  size_t len = 36 * 2048; // 36K words
-  size_t res = fread((uint16_t *)shared, len, 1, f);
-  if (res != 1) {
-    perror(fname);
-    exit(-1);
-  }
-  fclose(f);
+    size_t len = 36 * 2048; // 36K words
+    size_t res = fread((uint16_t *)shared, len, 1, f);
+    if (res != 1) {
+      perror(fname);
+      exit(-1);
+    }
+    fclose(f);
 
-  // Byte swap
-  for (int i = 0; i < 36 * 1024; i++) {
-    uint16_t word = shared[i];
-    shared[i] = (word << 8) | (word >> 8);
+    // Byte swap
+    for (int i = 0; i < 36 * 1024; i++) {
+      uint16_t word = shared[i];
+      shared[i] = (word << 8) | (word >> 8);
+    }
+    printf("Read %s\n", fname);
   }
-  printf("Reading %s\n", fname);
 
   // iface is at the start of the 8K PRU0 RAM
   volatile struct iface *iface = (volatile struct iface *) mmap(NULL, 8192, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x4a300000); // PRU_ICSS
@@ -79,6 +83,10 @@ void main(int argc, char **argv) {
       printf("CANCEL ");
     } else if (state == STATE_FAULT) {
       printf("FAULT  ");
+      uint16_t addr = iface->faultaddr;
+      uint16_t data = iface->faultdata;
+      uint16_t data2 = ((data & 0x8000) >> 1) | (data & 0x3fff);
+      printf(" a:%x d:%x   a:%06o d:%05o %05o", addr, data, addr, data, data2);
     } else if (state == STATE_DONE) {
       printf("DONE   ");
     } else {
@@ -90,7 +98,7 @@ void main(int argc, char **argv) {
       uint16_t addr = iface->buf[i+1] >> 16;
       uint16_t data = iface->buf[i+1] & 0xffff;
       uint16_t data2 = ((data & 0x8000) >> 1) | (data & 0x3fff);
-      printf(" a:%x d:%x   a:%05o d:%05o %05o", addr, data, addr, data, data2);
+      printf(" a:%x d:%x   a:%06o d:%05o %05o", addr, data, addr, data, data2);
       i++;
     }
     printf("\n");
