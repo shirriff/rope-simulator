@@ -1,6 +1,6 @@
 #!/bin/bash
 export PRUN=0
-export TARGET=agc_pru
+export TARGET=main_pru
 echo PRUN=$PRUN
 echo TARGET=$TARGET
 
