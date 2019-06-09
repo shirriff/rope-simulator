@@ -80,14 +80,20 @@ inline void pwm_yellow() {
 }
 
 void fault(volatile struct iface *iface) {
-        pwm_red();
+        // pwm_red();
+	// iface->faultaddr = iface->lastaddr;
+	// iface->faultdata = iface->lastdata;
 	uint32_t r31 = __R31 & 3;
-	do {
-	  r31 = __R31 & 3;
-	  update_status(iface, 998, r31, STATE_FAULT);
-	  __delay_cycles(100000); // .5 second
-	} while (r31 != 2);
-	update_status(iface, 999, r31, STATE_FAULT);
+	__R30 |= 1 << 7; // Raise test sync output
+	if (0) {
+	  do {
+	    r31 = __R31 & 3;
+	    update_status(iface, 998, r31, STATE_FAULT);
+	    __delay_cycles(100000); // .5 second
+	  } while (r31 != 2);
+	}
+	// update_status(iface, 999, r31, STATE_FAULT);
+	// update_status(iface, 999, r31, STATE_DONE);
 }
 
 void main(void)
@@ -103,6 +109,9 @@ void main(void)
 
 	uint32_t r31 = __R31 & 3;
 
+	__R30 &= ~(1 << 7); // Turn off test sync output
+
+
 	// Initial wait for idle
 	pwm_white();
 	update_status(iface, count, r31, STATE_IDLE);
@@ -115,6 +124,7 @@ void main(void)
 	while (1) {
 idle_loop:
 	    count = 0;
+	    __R30 &= ~(1 << 7); // Clear test sync output
 	    pwm_green();
 	    r31 = __R31 & 3;
 	    update_status(iface, count, r31, STATE_IDLE);
@@ -173,10 +183,14 @@ active:
 	    update_status(iface, count, r31, STATE_GOT_ADDR);
 
 	    // At this point, the address should be good.
+	    // __delay_cycles(200); // 200 cycles = 1000ns = 1 us
 	    // Get the address
 	    uint32_t address = (gpio0[GPIO_DATAIN] & 0xff00) | ((gpio1[GPIO_DATAIN] >> 12) & 0x00ff);
 	    uint16_t data = shared[address];
 	    gpio2[GPIO_DATAOUT] = ((uint32_t) (data ^ 0xffff)) << 1; // Sense data starts in bit 1 of gpio2. Flip bits; active-low.
+	    if (address == 045570) {
+	      __R30 |= 1 << 7; // Raise test sync output
+	    }
 	    iface->lastaddr = address;
 	    iface->lastdata = data;
 	    log(iface, (address << 16) | data);
@@ -206,13 +220,22 @@ active:
 
 	    if (r31 != 2) {
 	      // Unexpected state
-	      update_status(iface, count, r31, STATE_FAULT);
 	      fault(iface);
-	      continue;
+	      // goto idle_loop;
+	    }
+
+	    if (data == 0) {
+	      // Bad data
+	      fault(iface);
 	    }
 
 	    // Done
 	    update_status(iface, count, r31, STATE_DONE);
 	}
-	pwm_yellow();
+	while (1) {
+	  pwm_yellow();
+	  __delay_cycles(200000000);
+	  pwm_red();
+	  __delay_cycles(200000000);
+        }
 }
