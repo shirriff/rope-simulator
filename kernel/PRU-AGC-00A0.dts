@@ -50,6 +50,7 @@
          "P9_22", // r
          "P9_21", // g
          "P8_34", // b
+         "P9_25", // test
         "pru0";
 
        fragment@0 {
@@ -96,6 +97,7 @@
          0x150 0x0b /* P9_22 r - ehrpwm0A - output */
          0x154 0x0b /* P9_21 g - ehrpwm0B - output */
          0x0CC 0x0a /* P8_34 b - ehrpwm1B - output */
+         0x1AC 0x05 /* P9_25 trigger - pr1_pru0_pru_r30_7 - output, mode 5 */
 			>;
 		  };
              };
@@ -142,6 +144,7 @@
 	         	P9_22_pinmux {status = "disabled"; }; // r
 	         	P9_21_pinmux {status = "disabled"; }; // g
 	         	P8_34_pinmux {status = "disabled"; }; // b
+	         	P9_25_pinmux {status = "disabled"; }; // test
 
 			test_helper: helper {
 				compatible = "bone-pinmux-helper";
