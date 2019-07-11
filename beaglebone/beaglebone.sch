@@ -1,0 +1,1748 @@
+EESchema Schematic File Version 4
+LIBS:beaglebone-cache
+EELAYER 26 0
+EELAYER END
+$Descr User 19685 13780
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GNDD #PWR01
+U 1 1 5589785A
+P 9850 4400
+F 0 "#PWR01" H 9850 4150 50  0001 C CNN
+F 1 "GNDD" H 9850 4250 50  0000 C CNN
+F 2 "" H 9850 4400 60  0000 C CNN
+F 3 "" H 9850 4400 60  0000 C CNN
+	1    9850 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10100 4000 10250 4000
+Wire Wire Line
+	10250 4000 10250 4100
+Wire Wire Line
+	10250 4300 9850 4300
+Wire Wire Line
+	9450 4300 9450 4100
+Wire Wire Line
+	9450 4000 9600 4000
+Wire Wire Line
+	9600 4100 9450 4100
+Connection ~ 9450 4100
+Wire Wire Line
+	10100 4100 10250 4100
+Connection ~ 10250 4100
+Wire Wire Line
+	9850 4400 9850 4300
+Connection ~ 9850 4300
+$Comp
+L power:GNDD #PWR02
+U 1 1 558978D3
+P 10900 1900
+F 0 "#PWR02" H 10900 1650 50  0001 C CNN
+F 1 "GNDD" H 10900 1750 50  0000 C CNN
+F 2 "" H 10900 1900 60  0000 C CNN
+F 3 "" H 10900 1900 60  0000 C CNN
+	1    10900 1900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GNDD #PWR03
+U 1 1 5589790A
+P 8800 1900
+F 0 "#PWR03" H 8800 1650 50  0001 C CNN
+F 1 "GNDD" H 8800 1750 50  0000 C CNN
+F 2 "" H 8800 1900 60  0000 C CNN
+F 3 "" H 8800 1900 60  0000 C CNN
+	1    8800 1900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDD #PWR04
+U 1 1 558979C1
+P 12050 1900
+F 0 "#PWR04" H 12050 1650 50  0001 C CNN
+F 1 "GNDD" H 12050 1750 50  0000 C CNN
+F 2 "" H 12050 1900 60  0000 C CNN
+F 3 "" H 12050 1900 60  0000 C CNN
+	1    12050 1900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDD #PWR05
+U 1 1 558979E8
+P 13050 1900
+F 0 "#PWR05" H 13050 1650 50  0001 C CNN
+F 1 "GNDD" H 13050 1750 50  0000 C CNN
+F 2 "" H 13050 1900 60  0000 C CNN
+F 3 "" H 13050 1900 60  0000 C CNN
+	1    13050 1900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3.3V #PWR06
+U 1 1 55897A67
+P 10250 1700
+F 0 "#PWR06" H 10250 1550 50  0001 C CNN
+F 1 "+3V3" H 10250 1840 50  0000 C CNN
+F 2 "" H 10250 1700 60  0000 C CNN
+F 3 "" H 10250 1700 60  0000 C CNN
+	1    10250 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10100 2000 10250 2000
+Wire Wire Line
+	10250 2000 10250 1700
+$Comp
+L power:+3.3V #PWR08
+U 1 1 55897EE7
+P 9450 1700
+F 0 "#PWR08" H 9450 1550 50  0001 C CNN
+F 1 "+3V3" H 9450 1840 50  0000 C CNN
+F 2 "" H 9450 1700 60  0000 C CNN
+F 3 "" H 9450 1700 60  0000 C CNN
+	1    9450 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 2000 9450 2000
+Wire Wire Line
+	9450 2000 9450 1700
+Wire Wire Line
+	10100 1900 10900 1900
+Wire Wire Line
+	9600 1900 8800 1900
+Wire Wire Line
+	12050 1900 12300 1900
+Wire Wire Line
+	12800 1900 13050 1900
+Text GLabel 10200 2300 2    50   Input ~ 0
+SYS_RESETN
+Wire Wire Line
+	10100 2300 10200 2300
+Text GLabel 9500 2300 0    50   Input ~ 0
+PWR_BUT
+Wire Wire Line
+	9600 2300 9500 2300
+$Comp
+L Connector_Generic:Conn_02x23_Odd_Even P9
+U 1 1 55DF7DBA
+P 9800 3000
+F 0 "P9" H 9800 4200 50  0000 C CNN
+F 1 "BeagleBone_Black_Header" V 9850 3050 50  0000 C CNN
+F 2 "Socket_BeagleBone_Black:Socket_BeagleBone_Black" H 9800 2150 60  0001 C CNN
+F 3 "" H 9800 2150 60  0000 C CNN
+	1    9800 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 4100 9450 4000
+Wire Wire Line
+	10250 4100 10250 4300
+Wire Wire Line
+	9850 4300 9450 4300
+Text Notes 3650 10700 0    50   ~ 0
+female
+$Comp
+L Switch:SW_Push B1
+U 1 1 5BF5FE79
+P 13800 3250
+F 0 "B1" H 13800 3535 50  0000 C CNN
+F 1 "SW_Push" H 13800 3444 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH_6mm" H 13800 3450 50  0001 C CNN
+F 3 "" H 13800 3450 50  0001 C CNN
+	1    13800 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push B2
+U 1 1 5BF5FF45
+P 13800 3750
+F 0 "B2" H 13800 4035 50  0000 C CNN
+F 1 "SW_Push" H 13800 3944 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH_6mm" H 13800 3950 50  0001 C CNN
+F 3 "" H 13800 3950 50  0001 C CNN
+	1    13800 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C10
+U 1 1 5BF608B3
+P 11450 5600
+F 0 "C10" H 11558 5642 45  0000 L CNN
+F 1 ".1UF" H 11558 5558 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 11480 5700 20  0001 C CNN
+F 3 "" H 11450 5550 60  0001 C CNN
+	1    11450 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0101
+U 1 1 5BF60EBE
+P 11450 5450
+F 0 "#PWR0101" H 11450 5300 50  0001 C CNN
+F 1 "+3.3V" H 11465 5623 50  0000 C CNN
+F 2 "" H 11450 5450 50  0001 C CNN
+F 3 "" H 11450 5450 50  0001 C CNN
+	1    11450 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C6
+U 1 1 5BF613A4
+P 16100 10200
+F 0 "C6" H 16208 10242 45  0000 L CNN
+F 1 ".1UF" H 16208 10158 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 16130 10300 20  0001 C CNN
+F 3 "" H 16100 10150 60  0001 C CNN
+	1    16100 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c32:AM26C32 IC5
+U 1 1 5BF63D7C
+P 5550 12000
+F 0 "IC5" H 5550 12928 50  0000 C CNN
+F 1 "AM26C32" H 5550 12837 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5350 11200 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/am26lv32.pdf" H 5350 11100 50  0001 L CNN
+F 4 "4975637" H 5350 11000 50  0001 L CNN "Farnell"
+	1    5550 12000
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c32:AM26C32 IC3
+U 1 1 5BF64B48
+P 5850 7350
+F 0 "IC3" H 5850 8278 50  0000 C CNN
+F 1 "AM26C32" H 5850 8187 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5650 6550 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/am26lv32.pdf" H 5650 6450 50  0001 L CNN
+F 4 "4975637" H 5650 6350 50  0001 L CNN "Farnell"
+	1    5850 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c32:AM26C32 IC4
+U 1 1 5BF64BEC
+P 5500 9600
+F 0 "IC4" H 5500 10528 50  0000 C CNN
+F 1 "AM26C32" H 5500 10437 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5300 8800 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/am26lv32.pdf" H 5300 8700 50  0001 L CNN
+F 4 "4975637" H 5300 8600 50  0001 L CNN "Farnell"
+	1    5500 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R1
+U 1 1 5BF6E2F9
+P 13850 2250
+F 0 "R1" V 13645 2250 50  0000 C CNN
+F 1 "220" V 13736 2250 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603" V 13890 2240 50  0001 C CNN
+F 3 "" H 13850 2250 50  0001 C CNN
+	1    13850 2250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_US R3
+U 1 1 5BF6F2CE
+P 13850 2450
+F 0 "R3" V 13645 2450 50  0000 C CNN
+F 1 "220" V 13736 2450 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603" V 13890 2440 50  0001 C CNN
+F 3 "" H 13850 2450 50  0001 C CNN
+	1    13850 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_US R2
+U 1 1 5BF6F362
+P 13850 2650
+F 0 "R2" V 13645 2650 50  0000 C CNN
+F 1 "220" V 13736 2650 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603" V 13890 2640 50  0001 C CNN
+F 3 "" H 13850 2650 50  0001 C CNN
+	1    13850 2650
+	0    1    1    0   
+$EndComp
+Text GLabel 14000 3250 2    50   Input ~ 0
+PWR_BUT
+$Comp
+L power:GNDD #PWR0108
+U 1 1 5BF70CDF
+P 13600 3250
+F 0 "#PWR0108" H 13600 3000 50  0001 C CNN
+F 1 "GNDD" H 13600 3100 50  0000 C CNN
+F 2 "" H 13600 3250 60  0000 C CNN
+F 3 "" H 13600 3250 60  0000 C CNN
+	1    13600 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0112
+U 1 1 5BF72AB0
+P 12350 6150
+F 0 "#PWR0112" H 12350 5900 50  0001 C CNN
+F 1 "GNDD" H 12350 6000 50  0000 C CNN
+F 2 "" H 12350 6150 60  0000 C CNN
+F 3 "" H 12350 6150 60  0000 C CNN
+	1    12350 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0113
+U 1 1 5BF72BE6
+P 11950 5950
+F 0 "#PWR0113" H 11950 5700 50  0001 C CNN
+F 1 "GNDD" H 11950 5800 50  0000 C CNN
+F 2 "" H 11950 5950 60  0000 C CNN
+F 3 "" H 11950 5950 60  0000 C CNN
+	1    11950 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0114
+U 1 1 5BF72D05
+P 11450 5750
+F 0 "#PWR0114" H 11450 5500 50  0001 C CNN
+F 1 "GNDD" H 11450 5600 50  0000 C CNN
+F 2 "" H 11450 5750 60  0000 C CNN
+F 3 "" H 11450 5750 60  0000 C CNN
+	1    11450 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0115
+U 1 1 5BF72E0D
+P 16100 10350
+F 0 "#PWR0115" H 16100 10100 50  0001 C CNN
+F 1 "GNDD" H 16100 10200 50  0000 C CNN
+F 2 "" H 16100 10350 60  0000 C CNN
+F 3 "" H 16100 10350 60  0000 C CNN
+	1    16100 10350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0119
+U 1 1 5BF74E47
+P 5550 12750
+F 0 "#PWR0119" H 5550 12500 50  0001 C CNN
+F 1 "GNDD" H 5550 12600 50  0000 C CNN
+F 2 "" H 5550 12750 60  0000 C CNN
+F 3 "" H 5550 12750 60  0000 C CNN
+	1    5550 12750
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c32:AM26C32 IC1
+U 1 1 5BF765AC
+P 5900 2550
+F 0 "IC1" H 5900 3478 50  0000 C CNN
+F 1 "AM26C32" H 5900 3387 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5700 1750 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/am26lv32.pdf" H 5700 1650 50  0001 L CNN
+F 4 "4975637" H 5700 1550 50  0001 L CNN "Farnell"
+	1    5900 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0123
+U 1 1 5BF774A4
+P 13600 3750
+F 0 "#PWR0123" H 13600 3500 50  0001 C CNN
+F 1 "GNDD" H 13600 3600 50  0000 C CNN
+F 2 "" H 13600 3750 60  0000 C CNN
+F 3 "" H 13600 3750 60  0000 C CNN
+	1    13600 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP1
+U 1 1 5BF7786D
+P 14400 2200
+F 0 "TP1" H 14458 2320 50  0000 L CNN
+F 1 "TestPoint" H 14458 2229 50  0000 L CNN
+F 2 "Measurement_Points:Measurement_Point_Round-TH_Small" H 14600 2200 50  0001 C CNN
+F 3 "~" H 14600 2200 50  0001 C CNN
+	1    14400 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0124
+U 1 1 5BF781EC
+P 14400 2200
+F 0 "#PWR0124" H 14400 1950 50  0001 C CNN
+F 1 "GNDD" H 14400 2050 50  0000 C CNN
+F 2 "" H 14400 2200 60  0000 C CNN
+F 3 "" H 14400 2200 60  0000 C CNN
+	1    14400 2200
+	1    0    0    -1  
+$EndComp
+Text GLabel 14000 3750 2    50   Input ~ 0
+SYS_RESETN
+$Comp
+L am26c31:AM26C31 IC6
+U 1 1 5C0AC7E7
+P 16150 9200
+F 0 "IC6" H 16150 10025 50  0000 C CNN
+F 1 "AM26C31" H 16150 9934 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 15950 8400 50  0001 L CNN
+F 3 "http://www.ti.com.cn/cn/lit/ds/symlink/am26c31.pdf" H 15950 8300 50  0001 L CNN
+F 4 "4975637" H 15950 8200 50  0001 L CNN "Farnell"
+	1    16150 9200
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c31:AM26C31 IC7
+U 1 1 5C0AC7F6
+P 16100 6750
+F 0 "IC7" H 16100 7575 50  0000 C CNN
+F 1 "AM26C31" H 16100 7484 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 15900 5950 50  0001 L CNN
+F 3 "http://www.ti.com.cn/cn/lit/ds/symlink/am26c31.pdf" H 15900 5850 50  0001 L CNN
+F 4 "4975637" H 15900 5750 50  0001 L CNN "Farnell"
+	1    16100 6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c31:AM26C31 IC8
+U 1 1 5C0AE287
+P 16100 4400
+F 0 "IC8" H 16100 5225 50  0000 C CNN
+F 1 "AM26C31" H 16100 5134 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 15900 3600 50  0001 L CNN
+F 3 "http://www.ti.com.cn/cn/lit/ds/symlink/am26c31.pdf" H 15900 3500 50  0001 L CNN
+F 4 "4975637" H 15900 3400 50  0001 L CNN "Farnell"
+	1    16100 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L am26c31:AM26C31 IC9
+U 1 1 5C0AE296
+P 16250 2250
+F 0 "IC9" H 16250 3075 50  0000 C CNN
+F 1 "AM26C31" H 16250 2984 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 16050 1450 50  0001 L CNN
+F 3 "http://www.ti.com.cn/cn/lit/ds/symlink/am26c31.pdf" H 16050 1350 50  0001 L CNN
+F 4 "4975637" H 16050 1250 50  0001 L CNN "Farnell"
+	1    16250 2250
+	1    0    0    -1  
+$EndComp
+Text Label 16450 8600 0    50   ~ 0
+sense4+
+Text Label 16450 8700 0    50   ~ 0
+sense4-
+Text Label 15850 9200 2    50   ~ 0
+sense4
+Text Label 15850 9400 2    50   ~ 0
+sense2
+Text Label 15850 9600 2    50   ~ 0
+sense1
+Text Label 15850 9800 2    50   ~ 0
+sense3
+Text Label 16450 8900 0    50   ~ 0
+sense2+
+Text Label 16450 9000 0    50   ~ 0
+sense2-
+Text Label 16450 9200 0    50   ~ 0
+sense1+
+Text Label 16450 9300 0    50   ~ 0
+sense1-
+Text Label 16450 9500 0    50   ~ 0
+sense3+
+Text Label 16450 9600 0    50   ~ 0
+sense3-
+$Comp
+L power:GNDD #PWR0133
+U 1 1 5C0B8CE4
+P 15850 8700
+F 0 "#PWR0133" H 15850 8450 50  0001 C CNN
+F 1 "GNDD" H 15854 8545 50  0000 C CNN
+F 2 "" H 15850 8700 50  0001 C CNN
+F 3 "" H 15850 8700 50  0001 C CNN
+	1    15850 8700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0134
+U 1 1 5C0B9378
+P 15800 6250
+F 0 "#PWR0134" H 15800 6000 50  0001 C CNN
+F 1 "GNDD" H 15804 6095 50  0000 C CNN
+F 2 "" H 15800 6250 50  0001 C CNN
+F 3 "" H 15800 6250 50  0001 C CNN
+	1    15800 6250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0135
+U 1 1 5C0B9487
+P 15800 3900
+F 0 "#PWR0135" H 15800 3650 50  0001 C CNN
+F 1 "GNDD" H 15804 3745 50  0000 C CNN
+F 2 "" H 15800 3900 50  0001 C CNN
+F 3 "" H 15800 3900 50  0001 C CNN
+	1    15800 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0136
+U 1 1 5C0B96E8
+P 15950 1750
+F 0 "#PWR0136" H 15950 1500 50  0001 C CNN
+F 1 "GNDD" H 15954 1595 50  0000 C CNN
+F 2 "" H 15950 1750 50  0001 C CNN
+F 3 "" H 15950 1750 50  0001 C CNN
+	1    15950 1750
+	1    0    0    -1  
+$EndComp
+Text Label 3400 5900 2    50   ~ 0
+IL4-
+Text Label 3400 6000 2    50   ~ 0
+IL5-
+Text Label 3400 6100 2    50   ~ 0
+IL6-
+Text Label 3400 6200 2    50   ~ 0
+IL7-
+Text Label 3400 6300 2    50   ~ 0
+plane0-
+Text Label 3400 6400 2    50   ~ 0
+plane1-
+Text Label 3400 6500 2    50   ~ 0
+plane2-
+Text Label 3400 6600 2    50   ~ 0
+plane3-
+Text Label 3400 6700 2    50   ~ 0
+plane4-
+Text Label 3400 6800 2    50   ~ 0
+plane5-
+Text Label 3400 6900 2    50   ~ 0
+plane6-
+Text Label 3400 7000 2    50   ~ 0
+plane7-
+Text Label 3400 7100 2    50   ~ 0
+plane8-
+Text Label 3400 7200 2    50   ~ 0
+addr_set-
+Text Label 3400 7300 2    50   ~ 0
+active-
+Text Label 3400 7500 2    50   ~ 0
+red_out
+Text Label 3400 8100 2    50   ~ 0
+IL1+
+Text Label 3400 8200 2    50   ~ 0
+IL2+
+Text Label 3400 8300 2    50   ~ 0
+IL3+
+Text Label 3400 8400 2    50   ~ 0
+IL4+
+Text Label 3400 8500 2    50   ~ 0
+IL5+
+Text Label 3400 8600 2    50   ~ 0
+IL6+
+Text Label 3400 8700 2    50   ~ 0
+IL7+
+Text Label 3400 8800 2    50   ~ 0
+plane0+
+Text Label 3400 8900 2    50   ~ 0
+plane1+
+Text Label 3400 9000 2    50   ~ 0
+plane2+
+Text Label 3400 9100 2    50   ~ 0
+plane3+
+Text Label 3400 9200 2    50   ~ 0
+plane4+
+Text Label 3400 9300 2    50   ~ 0
+plane5+
+Text Label 3400 9400 2    50   ~ 0
+plane6+
+Text Label 3400 9500 2    50   ~ 0
+plane7+
+Text Label 3400 9600 2    50   ~ 0
+plane8+
+Text Label 3400 9700 2    50   ~ 0
+addr_set+
+Text Label 3400 9800 2    50   ~ 0
+active+
+Text Label 16400 6150 0    50   ~ 0
+sense7+
+Text Label 16400 6250 0    50   ~ 0
+sense7-
+Text Label 16400 6450 0    50   ~ 0
+sense5+
+Text Label 16400 6550 0    50   ~ 0
+sense5-
+Text Label 16400 6750 0    50   ~ 0
+sense6+
+Text Label 16400 6850 0    50   ~ 0
+sense6-
+Text Label 16400 7050 0    50   ~ 0
+sense8+
+Text Label 16400 7150 0    50   ~ 0
+sense8-
+Text Label 16400 3800 0    50   ~ 0
+sense11+
+Text Label 16400 3900 0    50   ~ 0
+sense11-
+Text Label 16400 4100 0    50   ~ 0
+sense9+
+Text Label 16400 4200 0    50   ~ 0
+sense9-
+Text Label 16400 4400 0    50   ~ 0
+sense10+
+Text Label 16400 4500 0    50   ~ 0
+sense10-
+Text Label 16400 4700 0    50   ~ 0
+sense12+
+Text Label 16400 4800 0    50   ~ 0
+sense12-
+Text Label 16550 1650 0    50   ~ 0
+sense15+
+Text Label 16550 1750 0    50   ~ 0
+sense15-
+Text Label 16550 1950 0    50   ~ 0
+sense13+
+Text Label 16550 2050 0    50   ~ 0
+sense13-
+Text Label 16550 2250 0    50   ~ 0
+sense14+
+Text Label 16550 2350 0    50   ~ 0
+sense14-
+Text Label 16550 2550 0    50   ~ 0
+sense16+
+Text Label 16550 2650 0    50   ~ 0
+sense16-
+Text Label 15800 6750 2    50   ~ 0
+sense7
+Text Label 15800 6950 2    50   ~ 0
+sense5
+Text Label 15800 7150 2    50   ~ 0
+sense6
+Text Label 15800 7350 2    50   ~ 0
+sense8
+Text Label 15800 4400 2    50   ~ 0
+sense11
+Text Label 15800 4600 2    50   ~ 0
+sense9
+Text Label 15800 4800 2    50   ~ 0
+sense10
+Text Label 15800 5000 2    50   ~ 0
+sense12
+Text Label 15950 2250 2    50   ~ 0
+sense15
+Text Label 15950 2450 2    50   ~ 0
+sense13
+Text Label 15950 2650 2    50   ~ 0
+sense14
+Text Label 15950 2850 2    50   ~ 0
+sense16
+Text Label 17650 6550 2    50   ~ 0
+sense1+
+Text Label 17650 6450 2    50   ~ 0
+sense2+
+Text Label 17650 6350 2    50   ~ 0
+sense3+
+Text Label 17650 6250 2    50   ~ 0
+sense4+
+Text Label 17650 6150 2    50   ~ 0
+sense5+
+Text Label 17650 6050 2    50   ~ 0
+sense6+
+Text Label 17650 5950 2    50   ~ 0
+sense7+
+Text Label 17650 5850 2    50   ~ 0
+sense8+
+Text Label 17650 5750 2    50   ~ 0
+sense9+
+Text Label 17650 5650 2    50   ~ 0
+sense10+
+Text Label 17650 5550 2    50   ~ 0
+sense11+
+Text Label 17650 5450 2    50   ~ 0
+sense12+
+Text Label 17650 5350 2    50   ~ 0
+sense13+
+Text Label 17650 5250 2    50   ~ 0
+sense14+
+Text Label 17650 5150 2    50   ~ 0
+sense15+
+Text Label 17650 5050 2    50   ~ 0
+sense16+
+Text Label 17650 4050 2    50   ~ 0
+sense1-
+Text Label 17650 3950 2    50   ~ 0
+sense2-
+Text Label 17650 3850 2    50   ~ 0
+sense3-
+Text Label 17650 3750 2    50   ~ 0
+sense4-
+Text Label 17650 3650 2    50   ~ 0
+sense5-
+Text Label 17650 3550 2    50   ~ 0
+sense6-
+Text Label 17650 3450 2    50   ~ 0
+sense7-
+Text Label 17650 3350 2    50   ~ 0
+sense8-
+Text Label 17650 3250 2    50   ~ 0
+sense9-
+Text Label 17650 3150 2    50   ~ 0
+sense10-
+Text Label 17650 3050 2    50   ~ 0
+sense11-
+Text Label 17650 2950 2    50   ~ 0
+sense12-
+Text Label 17650 2850 2    50   ~ 0
+sense13-
+Text Label 17650 2750 2    50   ~ 0
+sense14-
+Text Label 17650 2650 2    50   ~ 0
+sense15-
+Text Label 17650 2550 2    50   ~ 0
+sense16-
+Text Label 5550 2050 2    50   ~ 0
+IL1+
+Text Label 5550 2150 2    50   ~ 0
+IL1-
+Text Label 5550 2300 2    50   ~ 0
+IL3+
+Text Label 5550 2400 2    50   ~ 0
+IL3-
+Text Label 5550 2550 2    50   ~ 0
+IL4+
+Text Label 5550 2650 2    50   ~ 0
+IL4-
+Text Label 5550 2800 2    50   ~ 0
+IL2+
+Text Label 5550 2900 2    50   ~ 0
+IL2-
+Text Label 6250 2100 0    50   ~ 0
+IL1
+Text Label 6250 2350 0    50   ~ 0
+IL3
+Text Label 6250 2600 0    50   ~ 0
+IL4
+Text Label 6250 2850 0    50   ~ 0
+IL2
+Text Label 5550 4350 2    50   ~ 0
+IL5+
+Text Label 5550 4450 2    50   ~ 0
+IL5-
+Text Label 5550 4600 2    50   ~ 0
+IL7+
+Text Label 5550 4700 2    50   ~ 0
+IL7-
+Text Label 5550 4850 2    50   ~ 0
+plane0+
+Text Label 5550 4950 2    50   ~ 0
+plane0-
+Text Label 5550 5100 2    50   ~ 0
+IL6+
+Text Label 5550 5200 2    50   ~ 0
+IL6-
+Text Label 5500 6850 2    50   ~ 0
+plane1+
+Text Label 5500 6950 2    50   ~ 0
+plane1-
+Text Label 5500 7100 2    50   ~ 0
+plane3+
+Text Label 5500 7200 2    50   ~ 0
+plane3-
+Text Label 5500 7350 2    50   ~ 0
+plane4+
+Text Label 5500 7450 2    50   ~ 0
+plane4-
+Text Label 5500 7600 2    50   ~ 0
+plane2+
+Text Label 5500 7700 2    50   ~ 0
+plane2-
+Text Label 5150 9100 2    50   ~ 0
+plane5+
+Text Label 5150 9200 2    50   ~ 0
+plane5-
+Text Label 5150 9350 2    50   ~ 0
+plane7+
+Text Label 5150 9450 2    50   ~ 0
+plane7-
+Text Label 5150 9600 2    50   ~ 0
+plane8+
+Text Label 5150 9700 2    50   ~ 0
+plane8-
+Text Label 5150 9850 2    50   ~ 0
+plane6+
+Text Label 5150 9950 2    50   ~ 0
+plane6-
+Text Label 6250 4400 0    50   ~ 0
+IL5
+Text Label 6250 4650 0    50   ~ 0
+IL7
+Text Label 6250 4900 0    50   ~ 0
+plane0
+Text Label 6250 5150 0    50   ~ 0
+IL6
+Text Label 5850 9150 0    50   ~ 0
+plane5
+Text Label 5850 9400 0    50   ~ 0
+plane7
+Text Label 5850 9650 0    50   ~ 0
+plane8
+Text Label 5850 9900 0    50   ~ 0
+plane6
+Text Label 5200 11500 2    50   ~ 0
+addr_set+
+Text Label 5200 11600 2    50   ~ 0
+addr_set-
+Text Label 5200 12000 2    50   ~ 0
+active+
+Text Label 5200 12100 2    50   ~ 0
+active-
+Text Label 5900 11550 0    50   ~ 0
+addr_set
+Text Label 5900 12050 0    50   ~ 0
+active
+$Comp
+L am26c32:AM26C32 IC2
+U 1 1 5BF6480B
+P 5900 4850
+F 0 "IC2" H 5900 5778 50  0000 C CNN
+F 1 "AM26C32" H 5900 5687 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5700 4050 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/am26lv32.pdf" H 5700 3950 50  0001 L CNN
+F 4 "4975637" H 5700 3850 50  0001 L CNN "Farnell"
+	1    5900 4850
+	1    0    0    -1  
+$EndComp
+Text Label 6200 6900 0    50   ~ 0
+plane1
+Text Label 6200 7150 0    50   ~ 0
+plane3
+Text Label 6200 7400 0    50   ~ 0
+plane4
+Text Label 6200 7650 0    50   ~ 0
+plane2
+$Comp
+L power:GNDD #PWR0137
+U 1 1 5C0EB3F2
+P 5050 12250
+F 0 "#PWR0137" H 5050 12000 50  0001 C CNN
+F 1 "GNDD" H 5050 12100 50  0000 C CNN
+F 2 "" H 5050 12250 60  0000 C CNN
+F 3 "" H 5050 12250 60  0000 C CNN
+	1    5050 12250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 12250 5200 12350
+Wire Wire Line
+	5200 12350 5200 12500
+Connection ~ 5200 12350
+Connection ~ 5200 12500
+Wire Wire Line
+	5200 12500 5200 12600
+$Comp
+L power:GNDD #PWR0138
+U 1 1 5C0ED858
+P 5000 10100
+F 0 "#PWR0138" H 5000 9850 50  0001 C CNN
+F 1 "GNDD" H 5000 9950 50  0000 C CNN
+F 2 "" H 5000 10100 60  0000 C CNN
+F 3 "" H 5000 10100 60  0000 C CNN
+	1    5000 10100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 10100 5150 10100
+Wire Wire Line
+	5150 10200 5150 10100
+Connection ~ 5150 10100
+$Comp
+L power:GNDD #PWR0139
+U 1 1 5C0EF25D
+P 5350 7850
+F 0 "#PWR0139" H 5350 7600 50  0001 C CNN
+F 1 "GNDD" H 5350 7700 50  0000 C CNN
+F 2 "" H 5350 7850 60  0000 C CNN
+F 3 "" H 5350 7850 60  0000 C CNN
+	1    5350 7850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 7850 5500 7850
+$Comp
+L power:GNDD #PWR0140
+U 1 1 5C0F0215
+P 5400 5350
+F 0 "#PWR0140" H 5400 5100 50  0001 C CNN
+F 1 "GNDD" H 5400 5200 50  0000 C CNN
+F 2 "" H 5400 5350 60  0000 C CNN
+F 3 "" H 5400 5350 60  0000 C CNN
+	1    5400 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 5350 5550 5350
+$Comp
+L power:GNDD #PWR0141
+U 1 1 5C0F0E0E
+P 5400 3050
+F 0 "#PWR0141" H 5400 2800 50  0001 C CNN
+F 1 "GNDD" H 5400 2900 50  0000 C CNN
+F 2 "" H 5400 3050 60  0000 C CNN
+F 3 "" H 5400 3050 60  0000 C CNN
+	1    5400 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 3050 5550 3050
+Wire Wire Line
+	5550 3050 5550 3150
+Connection ~ 5550 3050
+Wire Wire Line
+	5550 5350 5550 5450
+Connection ~ 5550 5350
+Wire Wire Line
+	5500 7850 5500 7950
+Connection ~ 5500 7850
+NoConn ~ 5900 11800
+NoConn ~ 5900 12300
+NoConn ~ 3400 8000
+NoConn ~ 3400 7900
+NoConn ~ 3400 7800
+NoConn ~ 3400 7700
+NoConn ~ 3400 7600
+NoConn ~ 3400 7400
+NoConn ~ 3400 10500
+NoConn ~ 3400 10400
+NoConn ~ 3400 10300
+NoConn ~ 3400 10200
+NoConn ~ 3400 10100
+NoConn ~ 3400 10000
+NoConn ~ 3400 9900
+NoConn ~ 17650 4150
+NoConn ~ 17650 4250
+NoConn ~ 17650 4350
+NoConn ~ 17650 4450
+NoConn ~ 17650 4550
+NoConn ~ 17650 4650
+NoConn ~ 17650 4750
+NoConn ~ 17650 4850
+NoConn ~ 17650 4950
+NoConn ~ 17650 1650
+NoConn ~ 17650 1750
+NoConn ~ 17650 1850
+NoConn ~ 17650 1950
+NoConn ~ 17650 2050
+NoConn ~ 17650 2150
+NoConn ~ 17650 2250
+NoConn ~ 17650 2350
+NoConn ~ 17650 2450
+Text Notes 17950 1450 0    50   ~ 0
+male
+Text Label 12750 5350 0    50   ~ 0
+red_out
+Text Label 11950 5350 2    50   ~ 0
+red
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C7
+U 1 1 5C116A3E
+P 16050 7800
+F 0 "C7" H 16158 7842 45  0000 L CNN
+F 1 ".1UF" H 16158 7758 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 16080 7900 20  0001 C CNN
+F 3 "" H 16050 7750 60  0001 C CNN
+	1    16050 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0143
+U 1 1 5C116A4A
+P 16050 7950
+F 0 "#PWR0143" H 16050 7700 50  0001 C CNN
+F 1 "GNDD" H 16050 7800 50  0000 C CNN
+F 2 "" H 16050 7950 60  0000 C CNN
+F 3 "" H 16050 7950 60  0000 C CNN
+	1    16050 7950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C8
+U 1 1 5C11783F
+P 16050 5400
+F 0 "C8" H 16158 5442 45  0000 L CNN
+F 1 ".1UF" H 16158 5358 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 16080 5500 20  0001 C CNN
+F 3 "" H 16050 5350 60  0001 C CNN
+	1    16050 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0145
+U 1 1 5C11784B
+P 16050 5550
+F 0 "#PWR0145" H 16050 5300 50  0001 C CNN
+F 1 "GNDD" H 16050 5400 50  0000 C CNN
+F 2 "" H 16050 5550 60  0000 C CNN
+F 3 "" H 16050 5550 60  0000 C CNN
+	1    16050 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C9
+U 1 1 5C11870A
+P 16200 3250
+F 0 "C9" H 16308 3292 45  0000 L CNN
+F 1 ".1UF" H 16308 3208 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 16230 3350 20  0001 C CNN
+F 3 "" H 16200 3200 60  0001 C CNN
+	1    16200 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0149
+U 1 1 5C11A1B3
+P 5050 3550
+F 0 "#PWR0149" H 5050 3300 50  0001 C CNN
+F 1 "GNDD" H 5050 3400 50  0000 C CNN
+F 2 "" H 5050 3550 60  0000 C CNN
+F 3 "" H 5050 3550 60  0000 C CNN
+	1    5050 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0151
+U 1 1 5C11E30B
+P 5150 5850
+F 0 "#PWR0151" H 5150 5600 50  0001 C CNN
+F 1 "GNDD" H 5150 5700 50  0000 C CNN
+F 2 "" H 5150 5850 60  0000 C CNN
+F 3 "" H 5150 5850 60  0000 C CNN
+	1    5150 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0153
+U 1 1 5C11F518
+P 5050 8300
+F 0 "#PWR0153" H 5050 8050 50  0001 C CNN
+F 1 "GNDD" H 5050 8150 50  0000 C CNN
+F 2 "" H 5050 8300 60  0000 C CNN
+F 3 "" H 5050 8300 60  0000 C CNN
+	1    5050 8300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0155
+U 1 1 5C120545
+P 6250 10500
+F 0 "#PWR0155" H 6250 10250 50  0001 C CNN
+F 1 "GNDD" H 6250 10350 50  0000 C CNN
+F 2 "" H 6250 10500 60  0000 C CNN
+F 3 "" H 6250 10500 60  0000 C CNN
+	1    6250 10500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C5
+U 1 1 5C12143B
+P 6250 12550
+F 0 "C5" H 6358 12592 45  0000 L CNN
+F 1 ".1UF" H 6358 12508 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 6280 12650 20  0001 C CNN
+F 3 "" H 6250 12500 60  0001 C CNN
+	1    6250 12550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0157
+U 1 1 5C121447
+P 6250 12700
+F 0 "#PWR0157" H 6250 12450 50  0001 C CNN
+F 1 "GNDD" H 6250 12550 50  0000 C CNN
+F 2 "" H 6250 12700 60  0000 C CNN
+F 3 "" H 6250 12700 60  0000 C CNN
+	1    6250 12700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0158
+U 1 1 5C128FF8
+P 13300 2450
+F 0 "#PWR0158" H 13300 2200 50  0001 C CNN
+F 1 "GNDD" H 13300 2300 50  0000 C CNN
+F 2 "" H 13300 2450 60  0000 C CNN
+F 3 "" H 13300 2450 60  0000 C CNN
+	1    13300 2450
+	1    0    0    -1  
+$EndComp
+Text Label 14000 2250 0    50   ~ 0
+r
+Text Label 14000 2450 0    50   ~ 0
+g
+Text Label 14000 2650 0    50   ~ 0
+b
+Text Label 12800 2700 0    50   ~ 0
+sense1
+Text Label 12300 2200 2    50   ~ 0
+sense2
+Text Label 12800 2200 0    50   ~ 0
+sense3
+Text Label 12800 2300 0    50   ~ 0
+sense4
+Text Label 12300 2300 2    50   ~ 0
+sense5
+Text Label 12300 4100 2    50   ~ 0
+sense6
+Text Label 12800 4100 0    50   ~ 0
+sense7
+Text Label 12300 4000 2    50   ~ 0
+sense8
+Text Label 12800 4000 0    50   ~ 0
+sense9
+Text Label 12300 3900 2    50   ~ 0
+sense10
+Text Label 12800 3900 0    50   ~ 0
+sense11
+Text Label 12300 3800 2    50   ~ 0
+sense12
+Text Label 12300 3700 2    50   ~ 0
+sense14
+Text Label 12800 3800 0    50   ~ 0
+sense13
+Text Label 12800 3700 0    50   ~ 0
+sense15
+Text Label 12800 2400 0    50   ~ 0
+IL1
+Text Label 12300 2400 2    50   ~ 0
+IL2
+Text Label 12800 2600 0    50   ~ 0
+IL3
+Text Label 12300 2600 2    50   ~ 0
+IL4
+Text Label 9600 2600 2    50   ~ 0
+IL5
+Text Label 9600 3000 2    50   ~ 0
+IL6
+Text Label 10100 2500 0    50   ~ 0
+IL7
+Text Label 10100 2600 0    50   ~ 0
+plane0
+Text Label 12300 3600 2    50   ~ 0
+plane1
+Text Label 12300 3500 2    50   ~ 0
+plane2
+Text Label 12300 3400 2    50   ~ 0
+plane3
+Text Label 12800 3400 0    50   ~ 0
+plane4
+Text Label 10100 2800 0    50   ~ 0
+plane5
+Text Label 9600 2800 2    50   ~ 0
+plane6
+Text Label 10100 3100 0    50   ~ 0
+plane7
+Text Label 10100 3000 0    50   ~ 0
+plane8
+Text Label 9600 3400 2    50   ~ 0
+active
+Text Label 9600 3300 2    50   ~ 0
+addr_set
+Text Label 10100 2900 0    50   ~ 0
+r
+Text Label 9600 2900 2    50   ~ 0
+g
+Text Label 10100 3300 0    50   ~ 0
+red
+NoConn ~ 12800 2000
+NoConn ~ 12800 2100
+NoConn ~ 12300 2000
+NoConn ~ 12300 2100
+NoConn ~ 12300 2500
+NoConn ~ 12800 2500
+NoConn ~ 12800 2800
+NoConn ~ 12800 2900
+NoConn ~ 12800 3000
+NoConn ~ 12800 3100
+NoConn ~ 12800 3200
+NoConn ~ 12800 3300
+NoConn ~ 12300 3300
+NoConn ~ 12300 3200
+NoConn ~ 12300 3100
+NoConn ~ 12300 3000
+NoConn ~ 12300 2900
+NoConn ~ 12300 2800
+NoConn ~ 12300 2700
+NoConn ~ 9600 2400
+NoConn ~ 9600 2500
+NoConn ~ 10100 2700
+NoConn ~ 9600 2700
+NoConn ~ 10100 3200
+NoConn ~ 9600 3100
+NoConn ~ 9600 3200
+NoConn ~ 9600 3500
+NoConn ~ 9600 3600
+NoConn ~ 9600 3700
+NoConn ~ 9600 3800
+NoConn ~ 9600 3900
+NoConn ~ 10100 3800
+NoConn ~ 10100 3700
+NoConn ~ 10100 3600
+NoConn ~ 10100 3900
+Text Label 12800 3500 0    50   ~ 0
+b
+$Comp
+L Connector_Generic:Conn_02x23_Odd_Even P8
+U 1 1 55DF7DE1
+P 12500 3000
+F 0 "P8" H 12500 4200 50  0000 C CNN
+F 1 "BeagleBone_Black_Header" V 12550 3050 50  0000 C CNN
+F 2 "Socket_BeagleBone_Black:Socket_BeagleBone_Black" H 12500 2150 60  0001 C CNN
+F 3 "" H 12500 2150 60  0000 C CNN
+	1    12500 3000
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10100 3400
+NoConn ~ 10100 3500
+Wire Wire Line
+	10700 2200 10100 2200
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR010
+U 1 1 55898497
+P 10700 1700
+F 0 "#PWR010" H 10700 1550 50  0001 C CNN
+F 1 "SYS_5V" H 10700 1840 50  0000 C CNN
+F 2 "" H 10700 1700 60  0000 C CNN
+F 3 "" H 10700 1700 60  0000 C CNN
+	1    10700 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10700 1700 10700 2200
+Wire Wire Line
+	9600 2200 9000 2200
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR011
+U 1 1 558984AF
+P 9000 1700
+F 0 "#PWR011" H 9000 1550 50  0001 C CNN
+F 1 "SYS_5V" H 9000 1840 50  0000 C CNN
+F 2 "" H 9000 1700 60  0000 C CNN
+F 3 "" H 9000 1700 60  0000 C CNN
+	1    9000 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2200 9000 1700
+NoConn ~ 10100 2100
+NoConn ~ 9600 2100
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0102
+U 1 1 5C195F68
+P 15850 8600
+F 0 "#PWR0102" H 15850 8450 50  0001 C CNN
+F 1 "SYS_5V" H 15850 8740 50  0000 C CNN
+F 2 "" H 15850 8600 60  0000 C CNN
+F 3 "" H 15850 8600 60  0000 C CNN
+	1    15850 8600
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0129
+U 1 1 5C196815
+P 15800 6150
+F 0 "#PWR0129" H 15800 6000 50  0001 C CNN
+F 1 "SYS_5V" H 15800 6290 50  0000 C CNN
+F 2 "" H 15800 6150 60  0000 C CNN
+F 3 "" H 15800 6150 60  0000 C CNN
+	1    15800 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0130
+U 1 1 5C196996
+P 15800 3800
+F 0 "#PWR0130" H 15800 3650 50  0001 C CNN
+F 1 "SYS_5V" H 15800 3940 50  0000 C CNN
+F 2 "" H 15800 3800 60  0000 C CNN
+F 3 "" H 15800 3800 60  0000 C CNN
+	1    15800 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0131
+U 1 1 5C196B17
+P 15950 1650
+F 0 "#PWR0131" H 15950 1500 50  0001 C CNN
+F 1 "SYS_5V" H 15950 1790 50  0000 C CNN
+F 2 "" H 15950 1650 60  0000 C CNN
+F 3 "" H 15950 1650 60  0000 C CNN
+	1    15950 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0132
+U 1 1 5C197C86
+P 16200 3100
+F 0 "#PWR0132" H 16200 2950 50  0001 C CNN
+F 1 "SYS_5V" H 16200 3240 50  0000 C CNN
+F 2 "" H 16200 3100 60  0000 C CNN
+F 3 "" H 16200 3100 60  0000 C CNN
+	1    16200 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0142
+U 1 1 5C198467
+P 16050 5250
+F 0 "#PWR0142" H 16050 5100 50  0001 C CNN
+F 1 "SYS_5V" H 16050 5390 50  0000 C CNN
+F 2 "" H 16050 5250 60  0000 C CNN
+F 3 "" H 16050 5250 60  0000 C CNN
+	1    16050 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0144
+U 1 1 5C19853E
+P 16100 10050
+F 0 "#PWR0144" H 16100 9900 50  0001 C CNN
+F 1 "SYS_5V" H 16100 10190 50  0000 C CNN
+F 2 "" H 16100 10050 60  0000 C CNN
+F 3 "" H 16100 10050 60  0000 C CNN
+	1    16100 10050
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0146
+U 1 1 5C198F23
+P 16050 7650
+F 0 "#PWR0146" H 16050 7500 50  0001 C CNN
+F 1 "SYS_5V" H 16050 7790 50  0000 C CNN
+F 2 "" H 16050 7650 60  0000 C CNN
+F 3 "" H 16050 7650 60  0000 C CNN
+	1    16050 7650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10100 2400
+Wire Wire Line
+	15850 9000 15850 8900
+Connection ~ 15850 8700
+Connection ~ 15850 8900
+Wire Wire Line
+	15850 8900 15850 8700
+Wire Wire Line
+	15800 6550 15800 6450
+Connection ~ 15800 6250
+Connection ~ 15800 6450
+Wire Wire Line
+	15800 6450 15800 6250
+Wire Wire Line
+	15800 4200 15800 4100
+Connection ~ 15800 3900
+Connection ~ 15800 4100
+Wire Wire Line
+	15800 4100 15800 3900
+Wire Wire Line
+	15950 2050 15950 1950
+Connection ~ 15950 1750
+Connection ~ 15950 1950
+Wire Wire Line
+	15950 1950 15950 1750
+Text Label 12800 3600 0    50   ~ 0
+sense16
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5C1A9543
+P 8250 1450
+F 0 "#FLG0101" H 8250 1525 50  0001 C CNN
+F 1 "PWR_FLAG" H 8250 1624 50  0000 C CNN
+F 2 "" H 8250 1450 50  0001 C CNN
+F 3 "~" H 8250 1450 50  0001 C CNN
+	1    8250 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5C1A9D6F
+P 8700 1450
+F 0 "#FLG0102" H 8700 1525 50  0001 C CNN
+F 1 "PWR_FLAG" H 8700 1624 50  0000 C CNN
+F 2 "" H 8700 1450 50  0001 C CNN
+F 3 "~" H 8700 1450 50  0001 C CNN
+	1    8700 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L pwr_BeagleBone:SYS_5V #PWR0125
+U 1 1 5C1AA517
+P 8700 1450
+F 0 "#PWR0125" H 8700 1300 50  0001 C CNN
+F 1 "SYS_5V" H 8700 1590 50  0000 C CNN
+F 2 "" H 8700 1450 60  0000 C CNN
+F 3 "" H 8700 1450 60  0000 C CNN
+	1    8700 1450
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3.3V #PWR0126
+U 1 1 5C1AC998
+P 8250 1450
+F 0 "#PWR0126" H 8250 1300 50  0001 C CNN
+F 1 "+3V3" H 8250 1590 50  0000 C CNN
+F 2 "" H 8250 1450 60  0000 C CNN
+F 3 "" H 8250 1450 60  0000 C CNN
+	1    8250 1450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_RCGB D1
+U 1 1 5C1BD4A5
+P 13500 2450
+F 0 "D1" H 13500 2947 50  0000 C CNN
+F 1 "LED_RCGB" H 13500 2856 50  0000 C CNN
+F 2 "LEDs:LED_D5.0mm-4" H 13500 2400 50  0001 C CNN
+F 3 "" H 13500 2400 50  0001 C CNN
+	1    13500 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L centronics-50-m-edited:50-PIN-CENTRONICS-MMALE M2
+U 1 1 5BFBA894
+P 17750 6550
+F 0 "M2" H 17750 6550 50  0001 C CNN
+F 1 "50-PIN-CENTRONICS-MMALE" H 17750 6550 50  0001 C CNN
+F 2 "Centronics-Ken:CENTRONICS-50-M" H 17780 6700 20  0001 C CNN
+F 3 "" H 17750 6550 50  0001 C CNN
+	1    17750 6550
+	1    0    0    -1  
+$EndComp
+$Comp
+L centronics-50-f-edited:50-PIN-CENTRONICS-FFEMALE M1
+U 1 1 5BFBBB27
+P 3500 5600
+F 0 "M1" H 3500 5600 50  0001 C CNN
+F 1 "50-PIN-CENTRONICS-FFEMALE" H 3500 5600 50  0001 C CNN
+F 2 "Centronics-Ken:CENTRONICS-50-F" H 3530 5750 20  0001 C CNN
+F 3 "" H 3500 5600 50  0001 C CNN
+	1    3500 5600
+	1    0    0    1   
+$EndComp
+$Comp
+L 74lvc07:74LVC07 U10
+U 1 1 5BFD2FF8
+P 12150 5550
+F 0 "U10" H 12050 6100 50  0000 C CNN
+F 1 "74LVC07" H 12100 6000 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 12150 5550 50  0001 C CNN
+F 3 "" H 12150 5550 50  0001 C CNN
+	1    12150 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11950 5950 11950 5850
+Connection ~ 11950 5550
+Wire Wire Line
+	11950 5550 11950 5450
+Connection ~ 11950 5650
+Wire Wire Line
+	11950 5650 11950 5550
+Connection ~ 11950 5750
+Wire Wire Line
+	11950 5750 11950 5650
+Connection ~ 11950 5850
+Wire Wire Line
+	11950 5850 11950 5750
+$Comp
+L power:+3V3 #PWR0107
+U 1 1 5BFD8334
+P 12350 5050
+F 0 "#PWR0107" H 12350 4900 50  0001 C CNN
+F 1 "+3V3" H 12300 5200 50  0000 C CNN
+F 2 "" H 12350 5050 50  0001 C CNN
+F 3 "" H 12350 5050 50  0001 C CNN
+	1    12350 5050
+	1    0    0    -1  
+$EndComp
+NoConn ~ 12750 5450
+NoConn ~ 12750 5550
+NoConn ~ 12750 5650
+NoConn ~ 12750 5750
+NoConn ~ 12750 5850
+$Comp
+L power:+3.3V #PWR0103
+U 1 1 5BFE4DC7
+P 6250 12400
+F 0 "#PWR0103" H 6250 12250 50  0001 C CNN
+F 1 "+3.3V" H 6265 12573 50  0000 C CNN
+F 2 "" H 6250 12400 50  0001 C CNN
+F 3 "" H 6250 12400 50  0001 C CNN
+	1    6250 12400
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C4
+U 1 1 5BFE56D0
+P 6250 10350
+F 0 "C4" H 6358 10392 45  0000 L CNN
+F 1 ".1UF" H 6358 10308 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 6280 10450 20  0001 C CNN
+F 3 "" H 6250 10300 60  0001 C CNN
+	1    6250 10350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0104
+U 1 1 5BFE56D6
+P 6250 10200
+F 0 "#PWR0104" H 6250 10050 50  0001 C CNN
+F 1 "+3.3V" H 6265 10373 50  0000 C CNN
+F 2 "" H 6250 10200 50  0001 C CNN
+F 3 "" H 6250 10200 50  0001 C CNN
+	1    6250 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C3
+U 1 1 5BFE65B0
+P 5050 8150
+F 0 "C3" H 5158 8192 45  0000 L CNN
+F 1 ".1UF" H 5158 8108 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5080 8250 20  0001 C CNN
+F 3 "" H 5050 8100 60  0001 C CNN
+	1    5050 8150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0105
+U 1 1 5BFE65B6
+P 5050 8000
+F 0 "#PWR0105" H 5050 7850 50  0001 C CNN
+F 1 "+3.3V" H 5065 8173 50  0000 C CNN
+F 2 "" H 5050 8000 50  0001 C CNN
+F 3 "" H 5050 8000 50  0001 C CNN
+	1    5050 8000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C2
+U 1 1 5BFE7463
+P 5150 5700
+F 0 "C2" H 5258 5742 45  0000 L CNN
+F 1 ".1UF" H 5258 5658 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5180 5800 20  0001 C CNN
+F 3 "" H 5150 5650 60  0001 C CNN
+	1    5150 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0106
+U 1 1 5BFE7469
+P 5150 5550
+F 0 "#PWR0106" H 5150 5400 50  0001 C CNN
+F 1 "+3.3V" H 5165 5723 50  0000 C CNN
+F 2 "" H 5150 5550 50  0001 C CNN
+F 3 "" H 5150 5550 50  0001 C CNN
+	1    5150 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun_SchematicComponents:SPARKFUN-CAPACITORS_0.1UF-0402-16V-10% C1
+U 1 1 5BFE838C
+P 5050 3400
+F 0 "C1" H 5158 3442 45  0000 L CNN
+F 1 ".1UF" H 5158 3358 45  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5080 3500 20  0001 C CNN
+F 3 "" H 5050 3350 60  0001 C CNN
+	1    5050 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0109
+U 1 1 5BFE8FCC
+P 5050 3250
+F 0 "#PWR0109" H 5050 3100 50  0001 C CNN
+F 1 "+3.3V" H 5065 3423 50  0000 C CNN
+F 2 "" H 5050 3250 50  0001 C CNN
+F 3 "" H 5050 3250 50  0001 C CNN
+	1    5050 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0110
+U 1 1 5BFE9255
+P 5550 1800
+F 0 "#PWR0110" H 5550 1650 50  0001 C CNN
+F 1 "+3.3V" H 5565 1973 50  0000 C CNN
+F 2 "" H 5550 1800 50  0001 C CNN
+F 3 "" H 5550 1800 50  0001 C CNN
+	1    5550 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 1800 5900 1800
+$Comp
+L power:+3.3V #PWR0111
+U 1 1 5BFEA68A
+P 5500 4100
+F 0 "#PWR0111" H 5500 3950 50  0001 C CNN
+F 1 "+3.3V" H 5515 4273 50  0000 C CNN
+F 2 "" H 5500 4100 50  0001 C CNN
+F 3 "" H 5500 4100 50  0001 C CNN
+	1    5500 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0116
+U 1 1 5BFEA865
+P 5400 6600
+F 0 "#PWR0116" H 5400 6450 50  0001 C CNN
+F 1 "+3.3V" H 5415 6773 50  0000 C CNN
+F 2 "" H 5400 6600 50  0001 C CNN
+F 3 "" H 5400 6600 50  0001 C CNN
+	1    5400 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0117
+U 1 1 5BFEA9CC
+P 5050 8850
+F 0 "#PWR0117" H 5050 8700 50  0001 C CNN
+F 1 "+3.3V" H 5065 9023 50  0000 C CNN
+F 2 "" H 5050 8850 50  0001 C CNN
+F 3 "" H 5050 8850 50  0001 C CNN
+	1    5050 8850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0118
+U 1 1 5BFEABA7
+P 5150 11250
+F 0 "#PWR0118" H 5150 11100 50  0001 C CNN
+F 1 "+3.3V" H 5165 11423 50  0000 C CNN
+F 2 "" H 5150 11250 50  0001 C CNN
+F 3 "" H 5150 11250 50  0001 C CNN
+	1    5150 11250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 11250 5550 11250
+Wire Wire Line
+	5050 8850 5500 8850
+Wire Wire Line
+	5400 6600 5850 6600
+Wire Wire Line
+	5500 4100 5900 4100
+$Comp
+L power:GNDD #PWR0120
+U 1 1 5BFEED93
+P 5900 3300
+F 0 "#PWR0120" H 5900 3050 50  0001 C CNN
+F 1 "GNDD" H 5900 3150 50  0000 C CNN
+F 2 "" H 5900 3300 60  0000 C CNN
+F 3 "" H 5900 3300 60  0000 C CNN
+	1    5900 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0121
+U 1 1 5BFEF104
+P 5900 5600
+F 0 "#PWR0121" H 5900 5350 50  0001 C CNN
+F 1 "GNDD" H 5900 5450 50  0000 C CNN
+F 2 "" H 5900 5600 60  0000 C CNN
+F 3 "" H 5900 5600 60  0000 C CNN
+	1    5900 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0122
+U 1 1 5BFEF41E
+P 5850 8100
+F 0 "#PWR0122" H 5850 7850 50  0001 C CNN
+F 1 "GNDD" H 5850 7950 50  0000 C CNN
+F 2 "" H 5850 8100 60  0000 C CNN
+F 3 "" H 5850 8100 60  0000 C CNN
+	1    5850 8100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0127
+U 1 1 5BFEF585
+P 5500 10350
+F 0 "#PWR0127" H 5500 10100 50  0001 C CNN
+F 1 "GNDD" H 5500 10200 50  0000 C CNN
+F 2 "" H 5500 10350 60  0000 C CNN
+F 3 "" H 5500 10350 60  0000 C CNN
+	1    5500 10350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5BFF2CF1
+P 7800 1450
+F 0 "#FLG0103" H 7800 1525 50  0001 C CNN
+F 1 "PWR_FLAG" H 7800 1624 50  0000 C CNN
+F 2 "" H 7800 1450 50  0001 C CNN
+F 3 "~" H 7800 1450 50  0001 C CNN
+	1    7800 1450
+	1    0    0    -1  
+$EndComp
+Text Label 3400 5600 2    50   ~ 0
+IL1-
+Text Label 3400 5700 2    50   ~ 0
+IL2-
+Text Label 3400 5800 2    50   ~ 0
+IL3-
+Wire Wire Line
+	5200 12250 5050 12250
+Connection ~ 5200 12250
+$Comp
+L power:GNDD #PWR0128
+U 1 1 5C040777
+P 5050 11750
+F 0 "#PWR0128" H 5050 11500 50  0001 C CNN
+F 1 "GNDD" H 5050 11600 50  0000 C CNN
+F 2 "" H 5050 11750 60  0000 C CNN
+F 3 "" H 5050 11750 60  0000 C CNN
+	1    5050 11750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5050 11750 5200 11750
+Wire Wire Line
+	5200 11750 5200 11850
+Connection ~ 5200 11750
+$Comp
+L power:GNDD #PWR0148
+U 1 1 5C047DE4
+P 7800 1450
+F 0 "#PWR0148" H 7800 1200 50  0001 C CNN
+F 1 "GNDD" H 7800 1300 50  0000 C CNN
+F 2 "" H 7800 1450 60  0000 C CNN
+F 3 "" H 7800 1450 60  0000 C CNN
+	1    7800 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDD #PWR0147
+U 1 1 5C058AA2
+P 16200 3400
+F 0 "#PWR0147" H 16200 3150 50  0001 C CNN
+F 1 "GNDD" H 16200 3250 50  0000 C CNN
+F 2 "" H 16200 3400 60  0000 C CNN
+F 3 "" H 16200 3400 60  0000 C CNN
+	1    16200 3400
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
